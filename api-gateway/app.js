@@ -1,3 +1,15 @@
+/*
+============================================
+; Title:  Assignment 1.4
+; Author: Professor Krasso
+; Date: 19 October 2020
+; Modified By: Marie Nicole Barleta
+; Description:  API Gateway Part I
+;===========================================
+*/
+
+
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
