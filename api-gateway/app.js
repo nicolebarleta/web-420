@@ -34,6 +34,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+//database connection
+mongoose.connect('mongodb+srv://admin1:admin@buwebdev-cluster-1.gexte.mongodb.net/api-gateway?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, {
+  promiseLibrary:require('bluebird')
+}).then( () => console.log("Connection to the database instance was successful")).catch((err) => console.error(err));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -50,11 +55,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-//database connection
-mongoose.connect('mongodb+srv://admin1:admin@buwebdev-cluster-1.gexte.mongodb.net/api-gateway?retryWrites=true&w=majority',{
-  promiseLibrary:require('bluebird')
-}).then( () => console.log("Connection to the database instance was successful")).catch((err) => console.error(err));
 
 
 module.exports = app;
