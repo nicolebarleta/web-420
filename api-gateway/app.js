@@ -17,6 +17,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
+var apiCatalog = require('./routes/api-catalog');
+
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
@@ -33,6 +35,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', apiCatalog);
 
 //database connection
 mongoose.connect('mongodb+srv://admin1:admin@buwebdev-cluster-1.gexte.mongodb.net/api-gateway?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, {
